@@ -1,19 +1,28 @@
 {% load static %}
 
+{% include '../header.html' %}
+
+<link rel="stylesheet" href="{% static 'styles/style.css' %}">
+
+
 
   <!-- Во всех двойных фигурных скобках - передаем ключ из views.py и названия поля из models.py -->
 
    <div class="news-detail">
 
-    <h1 class="news-title">{{ product_id.name_produtcs }}</h1>
+    <h1 class="news-title">{{ product_id.name_products }}</h1>
 
     <div class="news-media">
         <img src="{{ product_id.image.url }}" alt="{{ product_id.title }}">
     </div>
 
     <p class="news-description">{{ product_id.description }}</p>
-    <p class="news-category">Категория: {{ product_id.product_blog }}</p>
-
+    <p class="news-category">
+    Категория:
+    <span class="category-badge {{ product_id.type_products|lower }}">
+        {{ product_id.type_products }}
+    </span>
+</p>
     <data class="news-date">{{ product_id.created_at }}</data>
 
 </div>
@@ -21,7 +30,8 @@
 <!-- Comments -->
 <div class="comments">
   <h3 class="comments-title">Отзывы</h3>
-  {% for i in news_id.review.all %}
+  {% if product_id.review.all %}
+  {% for i in product_id.review.all %}
   <ul>
     <li>
       <p class="rating">Оценка: 
@@ -37,4 +47,9 @@
 
   </ul>
   {% endfor %}
+   {% else %}
+       <p>Нет отзывов</p>
+  {% endif %}
 </div>
+
+{% include '../footer.html' %}

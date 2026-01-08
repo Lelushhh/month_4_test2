@@ -1,25 +1,37 @@
 {% load static %}
 
+{% include '../header.html' %}
 
+<link rel="stylesheet" href="{% static 'styles/style.css' %}">
 
-   <h1>Список продуктов</h1>
+   <h1 class="page-title">Список продуктов</h1>
 
-<ul class="news-list">
-    <!-- тут обращаемся к ключу во views.py который прописываем в нашем случае это product -->
-    {% for i in product %}
-    <li class="news-card">
-        <!-- Передача переменных из models.py name_products -->
-        <h3>{{ i.name_products }}</h3>
-        <!-- Передача переменных из models.py image -->
-        <img src="{{ i.image.url }}" alt="" width="300" height="400">
-        <br>
-        <!-- Передача переменных из models.py created_at -->
-        <data>{{ i.created_at }}</data>
-        <br>
-        <!--Передаю счетчики-->
-        <p>👁 {{ i.views_count }} | ❤️ {{ i.likes_count }}</p>
-        <!-- Передача ссылки на получение id - используем ссылку и i.id  -->
-        <button><a href="/product_list/{{ i.id }}/">Читать далее</a></button>
-    </li>
-    {% endfor %}
-</ul>
+<section class="products">
+    <ul class="news-list">
+        {% for i in product %}
+        <li class="news-card">
+            <div class="card-image">
+                <img src="{{ i.image.url }}" alt="{{ i.name_products }}">
+            </div>
+
+            <div class="card-body">
+                <h3>{{ i.name_products }}</h3>
+
+                <p class="card-meta">
+                    <span>📅 {{ i.created_at }}</span>
+                </p>
+
+                <p class="card-stats">
+                    👁 {{ i.views_count }} &nbsp; | &nbsp; ❤️ {{ i.likes_count }}
+                </p>
+
+                <a href="/product_list/{{ i.id }}/" class="card-btn">
+                    Читать далее →
+                </a>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+
+{% include '../footer.html' %}

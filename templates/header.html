@@ -1,0 +1,25 @@
+{% load static %}
+
+<header class="navbar">
+    <div class="nav-container">
+
+        <div class="logo">
+            <a href="/">Product</a>
+        </div>
+
+        <nav class="nav-menu">
+            <a href="{% url 'home_page' %}" class="nav-link">Главная</a>
+            <a href="{% url 'blog_one' %}" class="nav-link">Блог</a>
+            <a href="{% url 'blog_two' %}" class="nav-link">О нас</a>
+            <a href="/basket/" class="nav-link basket">BASKET</a>
+            <a href="/hashtags/" class="nav-link">Hashtags</a>
+            <a href="/admin/" class="nav-link admin">Админ-панель</a>
+        </nav>
+
+        <div class="auth-buttons">
+            <a href="/register/" class="btn btn-outline">Регистрация</a>
+            <a href="/login/" class="btn btn-primary">Авторизация</a>
+        </div>
+
+    </div>
+</header>
