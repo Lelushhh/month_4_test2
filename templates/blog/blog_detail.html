@@ -1,0 +1,40 @@
+{% load static %}
+
+
+  <!-- Во всех двойных фигурных скобках - передаем ключ из views.py и названия поля из models.py -->
+
+   <div class="news-detail">
+
+    <h1 class="news-title">{{ product_id.name_produtcs }}</h1>
+
+    <div class="news-media">
+        <img src="{{ product_id.image.url }}" alt="{{ product_id.title }}">
+    </div>
+
+    <p class="news-description">{{ product_id.description }}</p>
+    <p class="news-category">Категория: {{ product_id.product_blog }}</p>
+
+    <data class="news-date">{{ product_id.created_at }}</data>
+
+</div>
+
+<!-- Comments -->
+<div class="comments">
+  <h3 class="comments-title">Отзывы</h3>
+  {% for i in news_id.review.all %}
+  <ul>
+    <li>
+      <p class="rating">Оценка: 
+        <span class="stars" aria-hidden="true">
+          <span class="star filled">{{ i.marks }}</span>
+        </span>
+      </p>
+
+      <p class="review">Отзыв: {{ i.text }}</p>
+
+      <p class="date">Дата: {{ i.created_at }}</p>
+    </li>
+
+  </ul>
+  {% endfor %}
+</div>

@@ -1,6 +1,30 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from datetime import datetime
+from products.models import Products
+
+def product(request):
+    if request.method == "GET":
+        product = Products.objects.all()
+    return render(
+        request,
+        template_name='blog/blog_list.html',
+        context={
+            'product':product
+        }
+    )
+
+def product_detail(request,id):
+    if request.method == "GET":
+        product_id = get_object_or_404(Products, id=id)
+    return render(
+        request,
+        template_name='blog/blog_detail.html',
+        context={
+            'product_id': product_id
+        }
+    )
+
 
 
 def korean_products(request):
