@@ -496,3 +496,10 @@ body {
 .category-badge.oily::before {
     content: "🛢";
 }
+.category-badge.masterpiece {
+    background: linear-gradient(135deg, #7c3aed, #ec4899);
+    color: #fff;
+}
+.category-badge.masterpiece::before {
+    content: "💫";
+}

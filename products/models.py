@@ -10,7 +10,8 @@ class Products(models.Model):
         ("Spicy", "Spicy"),
         ("Salty", "Salty"),
         ("Sour", "Sour"),
-        ("Oily", "Oily")
+        ("Oily", "Oily"),
+        ("Masterpiece", "Masterpiece")
     )
     type_products = models.CharField(max_length=100, choices=TYPE_PRODUCT, default="Sweet")
     created_at = models.DateTimeField(auto_now_add=True)
