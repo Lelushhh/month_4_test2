@@ -1,0 +1,23 @@
+{% load static %}
+
+{% include '../header.html' %}
+
+<link rel="stylesheet" href="{% static 'styles/style.css' %}">
+
+
+<div class="basket-wrapper">
+    <h1>Изменить</h1>
+
+    <form method="post" class="basket-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <div class="form-buttons">
+            <button type="submit" class="btn btn-submit">Изменить продукт</button>
+            <button type="reset" class="btn btn-reset">Очистить</button>
+        </div>
+    </form>
+</div>
+
+
+{% include '../footer.html' %}

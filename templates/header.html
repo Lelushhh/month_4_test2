@@ -11,7 +11,18 @@
             <a href="{% url 'home_page' %}" class="nav-link">Главная</a>
             <a href="{% url 'blog_one' %}" class="nav-link">Блог</a>
             <a href="{% url 'blog_two' %}" class="nav-link">О нас</a>
-            <a href="/basket/" class="nav-link basket">BASKET</a>
+
+            <!-- BASKET с подменю -->
+           <div class="nav-dropdown">
+    <a href="/basket/" class="nav-link basket">BASKET</a>
+
+    <div class="dropdown-menu dark-theme">
+        <a href="{% url 'create_basket' %}" class="dropdown-link">➕ Добавить товар</a>
+        <a href="{% url 'basket_list' %}" class="dropdown-link">📦 Все товары</a>
+    </div>
+</div>
+
+
             <a href="/hashtags/" class="nav-link">Hashtags</a>
             <a href="/admin/" class="nav-link admin">Админ-панель</a>
         </nav>

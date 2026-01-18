@@ -1,0 +1,44 @@
+{% load static %}
+
+{% include '../header.html' %}
+
+<link rel="stylesheet" href="{% static 'styles/style.css' %}">
+
+<h1 class="page-title">Список продуктов</h1>
+
+<section class="products">
+    <ul class="news-list">
+        {% for i in basket %}
+        <li class="news-card">
+
+            <div class="card-image">
+                {% if i.product.image %}
+                    <img src="{{ i.product.image.url }}" alt="{{ i.product }}">
+                {% endif %}
+            </div>
+
+            <!-- ИМЯ + ФАМИЛИЯ В ОДНУ СТРОКУ -->
+            <h3 class="news-name">
+                {{ i.name_basket }} {{ i.surname }}
+            </h3>
+
+            <h3 class="news-name">{{ i.phone_number }}</h3>
+            <h3 class="news-name">{{ i.city }}</h3>
+            <h3 class="news-name">{{ i.gender }}</h3>
+            <h3 class="news-name">{{ i.product }}</h3>
+
+            <div class="card-body">
+                <p class="card-meta">
+                    <span>📅 {{ i.created_at }}</span>
+                </p>
+
+                <a href="/basket_list/{{i.id}}/update/", class="card-btn">Обновить 🆙</a>
+                <a href="/basket_list/{{i.id}}/delete/", class="card-btn">Удалить 🚫</a>
+            </div>
+
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+
+{% include '../footer.html' %}

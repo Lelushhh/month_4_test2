@@ -503,3 +503,218 @@ body {
 .category-badge.masterpiece::before {
     content: "💫";
 }
+
+
+
+/*Выпадающий баскет*/
+/* Dropdown */
+.nav-dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #ffffff;
+    min-width: 180px;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.2s ease;
+    z-index: 100;
+}
+
+.dropdown-link {
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.dropdown-link:hover {
+    background: #f3f4f6;
+}
+
+/* Показ подменю */
+.nav-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+
+/* Контейнер */
+.nav-dropdown {
+    position: relative;
+}
+
+/* Выпадающее меню */
+.dropdown-menu.dark-theme {
+    position: absolute;
+    top: 120%;
+    left: 0;
+    min-width: 190px;
+
+    background: linear-gradient(180deg, #0b1220, #070d1a);
+    border-radius: 12px;
+
+    box-shadow:
+        0 0 0 1px rgba(100, 130, 255, 0.15),
+        0 10px 30px rgba(0, 0, 0, 0.6),
+        0 0 25px rgba(88, 120, 255, 0.15);
+
+    padding: 8px 0;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.25s ease;
+    z-index: 1000;
+}
+
+/* Пункты меню */
+.dropdown-link {
+    display: block;
+    padding: 10px 16px;
+
+    color: #c7d2fe;
+    text-decoration: none;
+    font-size: 14px;
+
+    transition: background 0.2s, color 0.2s;
+}
+
+.dropdown-link:hover {
+    background: rgba(99, 102, 241, 0.15);
+    color: #ffffff;
+}
+
+/* Показ при наведении */
+.nav-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Акцент BASKET */
+.nav-link.basket {
+    color: #facc15;
+    font-weight: 600;
+}
+
+.nav-link.basket:hover {
+    text-shadow: 0 0 8px rgba(250, 204, 21, 0.6);
+}
+
+
+
+
+
+/* Центрирование всей страницы */
+.basket-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at top, #0f1c3f, #050b1e);
+    padding: 20px;
+}
+
+/* Контейнер формы */
+.basket-wrapper {
+    width: 100%;
+    max-width: 500px;
+    background: rgba(15, 25, 60, 0.95);
+    border-radius: 20px;
+    padding: 35px 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+/* Заголовок */
+.basket-title {
+    text-align: center;
+    color: #4da3ff;
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+/* Django form.as_p */
+.basket-form p {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+}
+
+/* Label */
+.basket-form label {
+    color: #b9c6ff;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+/* Input / Select / Textarea */
+.basket-form input,
+.basket-form select,
+.basket-form textarea {
+    background: #0b1430;
+    border: 1px solid #1f2c5c;
+    border-radius: 10px;
+    padding: 12px 14px;
+    color: #ffffff;
+    font-size: 14px;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+.basket-form input:focus,
+.basket-form select:focus,
+.basket-form textarea:focus {
+    outline: none;
+    border-color: #4da3ff;
+    box-shadow: 0 0 0 2px rgba(77, 163, 255, 0.25);
+}
+
+/* Кнопки */
+.form-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+/* Общий стиль кнопок */
+.btn {
+    flex: 1;
+    padding: 12px 0;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+    border: none;
+}
+
+/* Submit */
+.btn-submit {
+    background: linear-gradient(135deg, #4da3ff, #3b6cff);
+    color: #ffffff;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(77, 163, 255, 0.4);
+}
+
+/* Reset */
+.btn-reset {
+    background: transparent;
+    border: 1px solid #2e3d80;
+    color: #b9c6ff;
+}
+
+.btn-reset:hover {
+    background: rgba(77, 163, 255, 0.1);
+}
