@@ -28,6 +28,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'products',
     'basket',
+    'users',
+    'django_recaptcha',
 ]
 
 MIDDLEWARE = [
@@ -109,3 +111,5 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+RECAPTCHA_PUBLIC_KEY = '6LeSgk8sAAAAAAvUlrinq6zKoZSiGvPadtFmxP_m'
+RECAPTCHA_PRIVATE_KEY = '6LeSgk8sAAAAAKqS4oK-b3k6TZ9Vi4D0zE12BrRx'

@@ -1,0 +1,39 @@
+{% load static %}
+
+{% include '../header.html' %}
+
+<link rel="stylesheet" href="{% static 'styles/style.css' %}">
+
+<h1 class="page-title">Список пользователей</h1>
+
+<section class="products">
+    <ul class="news-list">
+        {% for i in user_list %}
+        <li class="news-card">
+
+            <!-- ИМЯ + ФАМИЛИЯ В ОДНУ СТРОКУ -->
+            <h3 class="news-name">
+                 <img src="{{ i.photo.url }}" alt="" width="300" height="200">
+                {{ i.username }}
+            </h3>
+             <h3 class="news-name">{{ i.first_name }}</h3>
+            <h3 class="news-name">{{ i.city }}</h3>
+            <h3 class="news-name">{{ i.gender }}</h3>
+            <h3 class="news-name">{{ i.phone_number }}</h3>
+            <div class="card-body">
+                <p class="card-meta">
+                </p>
+            </div>
+
+        </li>
+        {% endfor %}
+
+         <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Выйти</button>
+        </form>
+
+    </ul>
+</section>
+
+{% include '../footer.html' %}
