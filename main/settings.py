@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'basket',
     'users',
     'django_recaptcha',
+    'clothes',
 ]
 
 MIDDLEWARE = [

@@ -718,3 +718,27 @@ body {
 .btn-reset:hover {
     background: rgba(77, 163, 255, 0.1);
 }
+
+
+
+/* КНОПКА ПОИСКА */
+.search-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-form input {
+    padding: 8px;
+    width: 250px;
+}
+
+.search-form button {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+
+
+/*ОДЕЖДА*/
+

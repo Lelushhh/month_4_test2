@@ -3,6 +3,25 @@ from django.http import HttpResponse
 from datetime import datetime
 from products.models import Products
 
+
+def search_view(request):
+     query = request.GET.get('s', '')
+     if query:
+         product = Products.objects.filter(name_products__icontains=query)
+     else:
+         product = Products.objects.none
+     return render(
+         request,
+         template_name='blog/blog_list.html',
+        context={
+            'product':product
+        }
+     )
+
+
+
+
+
 def product(request):
     if request.method == "GET":
         product = Products.objects.all()
