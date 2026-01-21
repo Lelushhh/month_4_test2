@@ -11,25 +11,30 @@
             <a href="{% url 'home_page' %}" class="nav-link">Главная</a>
             <a href="{% url 'blog_one' %}" class="nav-link">Блог</a>
             <a href="{% url 'blog_two' %}" class="nav-link">О нас</a>
+            <a href="{% url 'movie' %}" class="nav-link">Фильмы</a>
 
-            <!-- BASKET с подменю -->
-           <div class="nav-dropdown">
-    <a href="/basket/" class="nav-link basket">BASKET</a>
-
-    <div class="dropdown-menu dark-theme">
-        <a href="{% url 'create_basket' %}" class="dropdown-link">➕ Добавить товар</a>
-        <a href="{% url 'basket_list' %}" class="dropdown-link">📦 Все товары</a>
-    </div>
-</div>
-
+            <!-- BASKET -->
+            <div class="nav-dropdown">
+                <a href="/basket/" class="nav-link basket">BASKET</a>
+                <div class="dropdown-menu dark-theme">
+                    <a href="{% url 'create_basket' %}" class="dropdown-link">➕ Добавить товар</a>
+                    <a href="{% url 'basket_list' %}" class="dropdown-link">📦 Все товары</a>
+                </div>
+            </div>
 
             <a href="{% url 'clothes' %}" class="nav-link">Одежда</a>
             <a href="/admin/" class="nav-link admin">Админ-панель</a>
         </nav>
 
+        <!-- AUTH -->
         <div class="auth-buttons">
-            <a href="{% url 'register' %}" class="btn btn-outline">Регистрация</a>
-            <a href="{% url 'login' %}" class="btn btn-primary">Авторизация</a>
+            {% if user.is_authenticated %}
+                <span class="user-name">👤 {{ user.username }}</span>
+                <a href="{% url 'logout' %}" class="btn btn-outline">Выход</a>
+            {% else %}
+                <a href="{% url 'register' %}" class="btn btn-outline">Регистрация</a>
+                <a href="{% url 'login' %}" class="btn btn-primary">Авторизация</a>
+            {% endif %}
         </div>
 
     </div>

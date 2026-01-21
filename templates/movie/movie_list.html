@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<form method="get">
+    <input type="text" name="q" placeholder="Поиск фильма">
+    <button type="submit">Найти</button>
+</form>
+
+<div class="genres">
+    <a href="{% url 'movie' %}">Все</a>
+    <a href="?genre=Боевик">Боевик</a>
+    <a href="?genre=Драма">Драма</a>
+    <a href="?genre=Фантастика">Фантастика</a>
+    <a href="?genre=Ужасы">Ужасы</a>
+    <a href="?genre=Триллер">Триллер</a>
+    <a href="?genre=Документальное">Документальное</a>
+</div>
+
+    <a href="{% url 'movie_add' %}">Добавить фильм</a>
+
+    <h2>Фильмы</h2>
+
+    {% for movie in movies %}
+        <div>
+            <h3>{{ movie.name_movie }}</h3>
+            <a href="{% url 'movie_detail' movie.id %}">Подробнее</a>
+            <p>{{ movie.description }}</p>
+        </div>
+    {% empty %}
+        <p>Фильмов пока нет</p>
+    {% endfor %}
+
+{% else %}
+
+    <h2>Чтобы посмотреть фильмы</h2>
+    <a href="{% url 'login' %}">Войти</a>
+    <a href="{% url 'register' %}">Регистрация</a>
+    
+{% endif %}
+
+{% endblock %}
