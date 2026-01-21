@@ -2,31 +2,46 @@
 
 {% block content %}
 
-<h2>{{ movie.movie_name }}</h2>
+<h2>{{ movie.name_movie }}</h2>
 
 <img src="{{ movie.image.url }}" width="300">
+
 <p>{{ movie.description }}</p>
-<p>Жанр: {{ movie.jenre_movies }}</p>
+<p><b>Жанр:</b> {{ movie.jenre_movies }}</p>
+<p><small>Добавлено: {{ movie.created_at }}</small></p>
+
+<hr>
+
+{# 🔥 КНОПКИ EDIT / DELETE #}
+{% if user.is_authenticated %}
+    <a href="{% url 'movie_update' movie.id %}">✏️ Изменить</a>
+    |
+    <a href="{% url 'movie_delete' movie.id %}">🗑 Удалить</a>
+{% endif %}
 
 <hr>
 
 <h3>Отзывы</h3>
 
 {% for review in reviews %}
-    <p>
+    <div>
         <b>{{ review.marks }}</b><br>
-        {{ review.text }}
-    </p>
+        {{ review.text }}<br>
+        <small>{{ review.created_at }}</small>
+    </div>
+    <hr>
 {% empty %}
     <p>Отзывов пока нет</p>
 {% endfor %}
 
 <hr>
 
+{# 📝 ФОРМА ДОБАВЛЕНИЯ ОТЗЫВА #}
 {% if user.is_authenticated %}
 <form method="post">
     {% csrf_token %}
 
+    <label>Оценка:</label>
     <select name="marks">
         <option>🌟</option>
         <option>🌟🌟</option>
@@ -35,8 +50,12 @@
         <option>🌟🌟🌟🌟🌟</option>
     </select>
 
-    <textarea name="text"></textarea>
-    <button>Оставить отзыв</button>
+    <br><br>
+
+    <textarea name="text" placeholder="Ваш отзыв"></textarea>
+    <br><br>
+
+    <button type="submit">Оставить отзыв</button>
 </form>
 {% else %}
 <p>Войдите, чтобы оставить отзыв</p>

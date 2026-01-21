@@ -7,7 +7,42 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.contrib.auth import logout
 
-from django.db.models import Q
+@login_required
+def movie_delete(request, id):
+    movie = get_object_or_404(Movies, id=id)
+
+    if request.method == 'POST':
+        movie.delete()
+        return redirect('movies')
+
+    return render(
+        request,
+        'movie/movie_confirm_delete.html',
+        {'movie': movie}
+    )
+
+
+
+
+@login_required
+def movie_update(request, id):
+    movie = get_object_or_404(Movies, id=id)
+
+    if request.method == 'POST':
+        form = MovieForm(request.POST, request.FILES, instance=movie)
+        if form.is_valid():
+            form.save()
+            return redirect('movie_detail', id=movie.id)
+    else:
+        form = MovieForm(instance=movie)
+
+    return render(
+        request,
+        'movie/movie_form.html',
+        {'form': form, 'title': 'Редактировать фильм'}
+    )
+
+
 
 def movie(request):
     query = request.GET.get('q')

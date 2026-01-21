@@ -9,4 +9,6 @@ urlpatterns = [
     path('movie/add/', views.movie_create, name='movie_add'),
     path('logaut/', auth_views.LogoutView.as_view(), name='logaut'),
     path('logout/', logout_view, name='logout'),
+    path('movie/<int:id>/edit/', views.movie_update, name='movie_update'),
+    path('movie/<int:id>/delete/', views.movie_delete, name='movie_delete'),
 ]
